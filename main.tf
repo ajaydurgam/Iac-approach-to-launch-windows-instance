@@ -32,7 +32,6 @@ output "need-public-ip" {
  triggers = {
     password = "${rsadecrypt(aws_instance.example.*.password_data[count.index], file("mykey.pem"))}"
   }
-}
 
 output "Administrator_Password" {
     value = "${null_resource.example.*.triggers.password}"
