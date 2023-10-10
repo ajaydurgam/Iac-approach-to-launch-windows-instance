@@ -30,9 +30,9 @@ output "need-public-ip" {
   value = aws_instance.project-iac-approach-to-launch-windows.public_ip
 }
  triggers = {
-    password = "${rsadecrypt(aws_instance.example.*.password_data[count.index], file("mykey.pem"))}"
+    password = "${rsadecrypt(aws_instance.example.password_data, file("mykey.pem"))}"
   }
 
 output "Administrator_Password" {
-    value = "${null_resource.example.*.triggers.password}"
+    value = "${null_resource.example.triggers.password}"
 }
